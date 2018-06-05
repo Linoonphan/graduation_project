@@ -13,10 +13,10 @@ from aip import AipNlp
 from pyecharts import Scatter, Pie, Bar, Page
 
 LOC_HOST = "/static/ets/js"
-
-APP_ID = '11153995'
-API_KEY = 'B53hlQ84NgkxXoCmSOE0vcBL'
-SECRET_KEY = 'W9iBPGLk45ko95UFH4Sd58CGFnRMxNsu'
+#百度接口需要的验证信息
+APP_ID = 'id'
+API_KEY = 'api_key'
+SECRET_KEY = 'secret_key'
 client = AipNlp(APP_ID, API_KEY, SECRET_KEY)
 filename = "scritic_list_json.json"
 
