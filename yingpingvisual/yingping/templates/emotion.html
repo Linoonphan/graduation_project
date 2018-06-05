@@ -1,0 +1,64 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block emotion %}
+
+    {{ stechart|safe }}
+
+    <form  role="form">
+        {% csrf_token %}
+        <div class="form-group">
+                <label class="form-group"><h4>电影类型:</h4></label>
+                <select class="form-control" id="mety"  style="width:800px" >
+                    <option id="zj">传记</option>
+                    <option id="jq">剧情</option>
+                    <option id="xj">喜剧</option>
+                    <option id="yy">音乐</option>
+                    <option id="aq">爱情</option>
+                    <option id="kh">科幻</option>
+                    <option id="js">惊悚</option>
+                    <option id="qh">奇幻</option>
+                    <option id="jt">家庭</option>
+                    <option id="zz">战争</option>
+                    <option id="kb">恐怖</option>
+                    <option id="gw">歌舞</option>
+                    <option id="wy">文艺</option>
+                    <option id="wx">武侠</option>
+                    <option id="dz">动作</option>
+                    <option id="yd">运动</option>
+                    <option id="xb">西部</option>
+                    <option id="dh">动画</option>
+                    <option id="et">儿童</option>
+                    <option id="mx">冒险</option>
+                    <option id="fz">犯罪</option>
+                    <option id="xy">悬疑</option>
+                    <option id="ls">历史</option>
+                    <option id="tx">同性</option>
+                    <option id="jlp">纪录片</option>
+                    <option id="dp">短片</option>
+                </select>
+            </div>
+    </form>
+    {{ tmechart|safe }}
+
+<script>
+    $(document).ready(function(){
+        $.ajaxSetup({
+                   data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+              });
+        $('#mety').change(function(){
+            var movie_type = $("#mety").val();
+            $.ajax({
+                type: 'POST',
+                url: '#',
+                data: {movietype:movie_type},
+                success: function(data){
+                    $('#tms').html(data);
+                },
+                error: function(){
+                    alert("failed");
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

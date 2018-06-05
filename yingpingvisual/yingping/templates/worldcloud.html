@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block worldcloud %}
+
+    <form role="form" action="#" method="post" id="wcfresh" >
+        {% csrf_token %}
+        <div class="form-group" style=" padding-left: 440px;">
+            <div class="col-lg-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="moviename" id="id_moviename" placeholder="请输入电影名或年代">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary form-control" type="submit">搜索</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+    {{ myechart|safe }}
+        <!--SERVICES SECTION END  -->
+{% endblock %}
+<!--
+<div class="fieldWrapper">
+        {{ form.name.errors }}
+        <label for="{{ form.subject.id_for_label }}">电影</label>
+        {{ form.name}}
+    </div>
+ -->
+<!--
+{% block wcjavascript %}
+    <script>
+        $(document).ready(function(){
+            $ajaxSetup({
+                data:{csrfmiddlewaretoken: '{{ csrf_token }}'},
+            });
+        
+            $("#wcfresh").submit(function(){
+                var form = $(this).closest("form");
+                $.ajax({
+                    url:form.attr("worldcloud/"),
+                    type:"POST",
+                    data:form.serialize(),
+                    dataType:'json',
+                    success:function(data){
+                    $('#wcfresh').html(data.content_hml);
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}
+-->
